@@ -1,33 +1,36 @@
+
 {
-  "name": "mapbox-practice",
+  "name": "visaid",
   "version": "1.0.0",
-  "description": "",
+  "description": "Adding a layer of digital security to the physical world",
   "main": "index.js",
   "scripts": {
+    "start": "webpack-dev-server --open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kimhjona/mapBoxPractice.git"
+    "url": "git+https://github.com/MJ-JS/visaid.git"
   },
-  "author": "Jon Kim",
-  "license": "ISC",
+  "author": "MJJS",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kimhjona/mapBoxPractice/issues"
+    "url": "https://github.com/MJ-JS/visaid/issues"
   },
-  "homepage": "https://github.com/kimhjona/mapBoxPractice#readme",
+  "homepage": "https://github.com/MJ-JS/visaid#readme",
   "dependencies": {
     "lodash": "^4.17.4",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-hot-loader": "^3.1.1",
+    "react-hot-loader": "^3.0.0-beta.7",
     "react-redux": "^5.0.6",
-    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.1",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
@@ -38,6 +41,11 @@
     "babel-preset-stage-0": "^6.24.1",
     "clean-webpack-plugin": "^0.1.17",
     "css-loader": "^0.28.7",
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
     "file-loader": "^1.1.5",
     "html-loader": "^0.5.1",
     "html-webpack-plugin": "^2.30.1",
@@ -45,7 +53,7 @@
     "path": "^0.12.7",
     "redux-devtools": "^3.4.0",
     "source-map-loader": "^0.2.2",
-    "webpack": "^3.8.1",
+    "webpack": "3.6.0",
     "webpack-dev-server": "^2.9.3"
   }
 }
