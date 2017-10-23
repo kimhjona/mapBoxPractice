@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import { formChange, onSubmit, displayProvidersFunc, chooseBank } from '../../actions';
+import { updateLocation } from './actions';
 
 import MapBox from '../../components/MapBox';
 
@@ -11,47 +11,57 @@ import MapBox from '../../components/MapBox';
 // import Header from './Welcome/Header';
 
 const mapStateToProps = state => {
-  // const {
-  //   bank,
-  //   displayProviders,
-  //   isMapFormShown,
-  //   selection,
-  // } = state.Map;
-  // return {
-  //   bank,
-  //   displayProviders,
-  //   isMapFormShown,
-  //   selection,
-  // };
-}
+  const {
+    date,
+    time,
+    lng,
+    lat,
+    zoom,
+  } = state.map;
+  return {
+    date,
+    time,
+    lng,
+    lat,
+    zoom,
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
-    // formChange: (change) => { dispatch(formChange(change)); },
-    // onSubmit: () => { dispatch(onSubmit()); },
-    // displayProvidersFunc: () => { dispatch(displayProvidersFunc()); },
-    // chooseBank: bank => { dispatch(chooseBank(bank)); }
+    updateLocation: (lng, lat, zoom) => { dispatch(updateLocation(lng, lat, zoom)); },
   };
 };
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Map extends PureComponent {
   static propTypes = {
-    // formChange: PropTypes.func,
-    // onSubmit: PropTypes.func,
+    updateLocation: PropTypes.func,
+    lng: PropTypes.number,
+    lat: PropTypes.number,
+    zoom: PropTypes.number,
   };
 
-  // onFormChange = field => {
-  //   this.props.formChange(field);
-  // }
+  updateLocation = (lng, lat, zoom) => {
+    this.props.updateLocation(lng, lat, zoom);
+  }
+
   render() {
-    // const {
-    // } = this.props;
+    const {
+      lng,
+      lat,
+      zoom,
+    } = this.props;
 
     return (
       <div>
-        hi
-        <MapBox />
+        hello
+        {<MapBox
+          updateLocation={this.updateLocation}
+          lng={lng}
+          lat={lat}
+          zoom={zoom}
+        />}
       </div>
     );
   }

@@ -6,14 +6,16 @@ const webpack = require('webpack');
 const htmlWebpackTemplateConfig = require('./config/htmlWebpackTemplate.js'); // TODO: get working as import
 
 module.exports = {
-  context: path.join(__dirname, "src"),  
+  context: path.join(__dirname, 'src'),
   entry: {
-    'app': [
+    app: [
       'babel-polyfill',
-      'react-hot-loader/patch', 
-      './index.js'
+      'react-hot-loader/patch',
+      './index.js',
+      './assets/styles.css',
     ],
   },
+  cache: true,
   devtool: 'inline-eval-cheap-source-map',
   devServer: {
     contentBase: './dist',

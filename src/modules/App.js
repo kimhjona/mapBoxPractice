@@ -4,30 +4,31 @@ import { connect } from 'react-redux';
 import Map from './map/Container';
 
 const mapStateToProps = state => {
-  const {
-    map: {
-      // loggedIn,
-    },
-  } = state;
+  // const {
+  //   map: {
+
+  //   }
+  // } = state;
 
   return {
-    // loggedIn,
   };
 };
 
 @connect(mapStateToProps, {})
 export default class App extends PureComponent {
-  static propTypes = {
-    // loggedIn: PropTypes.bool,
-  }
-
+  // static propTypes = {
+  // }
   render() {
+    // console.log('this.state:', this.state);
+    // console.log('this.props:', this.props);
     const {
-      // loggedIn,
+
     } = this.props;
     return (
       <div>
-        <Map />
+        <Map 
+
+        />
       </div>
     );
   }

@@ -1,13 +1,8 @@
-export const dateChange = date => dispatch => {
+export const updateLocation = (lng, lat, zoom) => dispatch => {
   dispatch({
-    type: 'DATE_CHANGE',
-    date,
-  });
-};
-
-export const timeChange = time => dispatch => {
-  dispatch({
-    type: 'TIME_CHANGE',
-    time,
+    type: 'UPDATE_LOCATION',
+    lng,
+    lat,
+    zoom,
   });
 };
