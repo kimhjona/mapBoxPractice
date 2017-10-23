@@ -1,33 +1,34 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { changeMessage } from '../actions';
+import Map from './map/Container';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
+  const {
+    map: {
+      // loggedIn,
+    },
+  } = state;
+
   return {
-    message: state.message
-  }
-}
+    // loggedIn,
+  };
+};
 
-const mapDispatchToProps = dispatch => {
-  return {
-    changeMessage: message => { dispatch(changeMessage(message)) }
-  }
-}
-
-@connect(mapStateToProps, mapDispatchToProps)
-export default class Message extends PureComponent {
-
-  onClick = async () => {
-    console.log('onclick')
-    await this.props.changeMessage('test')
+@connect(mapStateToProps, {})
+export default class App extends PureComponent {
+  static propTypes = {
+    // loggedIn: PropTypes.bool,
   }
 
-  render () {
+  render() {
     const {
-      changeMessage,
-      message,
+      // loggedIn,
     } = this.props;
-
-    return <button onClick={this.onClick}> Test the action {message}!</button>;
+    return (
+      <div>
+        <Map />
+      </div>
+    );
   }
 }

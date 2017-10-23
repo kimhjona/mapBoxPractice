@@ -1,22 +1,8 @@
-const initialState = {
-  message: 'yo'
-}
+import { combineReducers } from 'redux';
+import map from '../src/modules/map/reducer';
+// import identification from '../src/modules/identification/reducer';
 
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-
-    case 'CHANGE_MESSAGE': {
-      console.log(action, 'action')
-      const { message } = action;
-      return {
-        ...state,
-        message,
-      }
-    }
-
-    default:
-      return state
-  }
-}
-
-export default reducer;
+export default combineReducers({
+  map,
+  // identification,
+});
