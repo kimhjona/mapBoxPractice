@@ -1,5 +1,5 @@
 
-var htmlWebpackTemplateConfig = {
+const htmlWebpackTemplateConfig = {
   // Required
   inject: false,
   template: require('html-webpack-template'),

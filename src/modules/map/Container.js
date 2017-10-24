@@ -45,7 +45,7 @@ export default class Map extends PureComponent {
   };
 
   updateLocation = (lng, lat, zoom) => {
-    console.log('updateLocation', lng, lat, zoom);
+    // console.log('updateLocation', lng, lat, zoom);
     this.props.updateLocation(lng, lat, zoom);
   }
 
@@ -59,12 +59,14 @@ export default class Map extends PureComponent {
     return (
       <div>
         hello
-        <MapBox
-          updateLocation={this.updateLocation}
-          lng={lng}
-          lat={lat}
-          zoom={zoom}
-        />
+        <div className="mapBoxContainer">
+          <MapBox
+            updateLocation={this.updateLocation}
+            lng={lng}
+            lat={lat}
+            zoom={zoom}
+          />
+        </div>
       </div>
     );
   }

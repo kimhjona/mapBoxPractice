@@ -1,9 +1,9 @@
 const initialState = {
   date: '2016-07-02',
   time: '13:09:31',
-  lng: 5,
-  lat: 34,
-  zoom: 1.5,
+  lng: -122.447303,
+  lat: 37.753574,
+  zoom: 9,
 };
 
 console.log('state:', initialState);

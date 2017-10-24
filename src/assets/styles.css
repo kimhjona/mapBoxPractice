@@ -13,10 +13,21 @@ body {
 .mapStyle {
   width: 100%;
   position: fixed;
-  top: 25px;
-  bottom: 25px;
+  top: 50px;
+  bottom: 50px;
+}
+
+.mapBoxContainer {
+  width: 100%;
+  position: absolute;
+  top: 50px;
+  bottom: 50px;
 }
 
 .mapCanvas {
   width: 100%;
+}
+
+.mapboxgl-missing-css {
+  display: none;
 }
