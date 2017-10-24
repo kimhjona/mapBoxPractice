@@ -1,14 +1,10 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { updateLocation } from './actions';
+import { updateLocation, updateDate } from './actions';
+import UnderMap from './UnderMap';
 
 import MapBox from '../../components/MapBox';
-
-// import InputText from '../../components/InputText';
-// import Button from '../../components/Button';
-// import BankSelect from './BankSelect/BankSelect';
-// import Header from './Welcome/Header';
 
 const mapStateToProps = state => {
   const {
@@ -29,9 +25,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateLocation: (lng, lat, zoom) => { 
-      dispatch(updateLocation(lng, lat, zoom));
-    },
+    updateLocation: (lng, lat, zoom) => { dispatch(updateLocation(lng, lat, zoom)); },
+    updateDate: date => { dispatch(updateDate(date)); },
   };
 };
 
@@ -39,14 +34,19 @@ const mapDispatchToProps = dispatch => {
 export default class Map extends PureComponent {
   static propTypes = {
     updateLocation: PropTypes.func,
+    updateDate: PropTypes.func,
     lng: PropTypes.number,
     lat: PropTypes.number,
     zoom: PropTypes.number,
+    date: PropTypes.string,
   };
 
   updateLocation = (lng, lat, zoom) => {
-    // console.log('updateLocation', lng, lat, zoom);
     this.props.updateLocation(lng, lat, zoom);
+  }
+
+  updateDate = date => {
+    this.props.updateDate(date);
   }
 
   render() {
@@ -54,11 +54,14 @@ export default class Map extends PureComponent {
       lng,
       lat,
       zoom,
+      date,
     } = this.props;
 
     return (
       <div>
-        hello
+        <div className="headerContainer">
+          <h1>1000 Trips, an Interactive Visualization</h1>
+        </div>
         <div className="mapBoxContainer">
           <MapBox
             updateLocation={this.updateLocation}
@@ -67,6 +70,10 @@ export default class Map extends PureComponent {
             zoom={zoom}
           />
         </div>
+        <UnderMap
+          updateDate={this.updateDate}
+          date={date}
+        />
       </div>
     );
   }

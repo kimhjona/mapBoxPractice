@@ -6,3 +6,10 @@ export const updateLocation = (lng, lat, zoom) => dispatch => {
     zoom,
   });
 };
+
+export const updateDate = date => dispatch => {
+  dispatch({
+    type: 'UPDATE_DATE',
+    date,
+  });
+};
