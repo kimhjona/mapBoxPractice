@@ -6,6 +6,7 @@ import mapboxgl from 'mapbox-gl';
 mapboxgl.accessToken = 'pk.eyJ1Ijoiam9uYW1hbjExIiwiYSI6ImNqOTN3dXZ6eDB6bWYzMm13MXA1a3RwOHoifQ.lAzDj4-oGBp40MWSqpFkCg';
 
 class MapBox extends React.Component {
+  
   static propTypes = {
     updateLocation: PropTypes.func.isRequired,
     lng: PropTypes.number.isRequired,
@@ -14,7 +15,6 @@ class MapBox extends React.Component {
   };
 
   componentDidMount() {
-    // console.log('this.props mapbox', this.props);
     const {
       lng,
       lat,
@@ -24,13 +24,16 @@ class MapBox extends React.Component {
     const map = new mapboxgl.Map({
       container: this.mapContainer,
       style: 'mapbox://styles/mapbox/light-v9',
-      center: [lng, lat],
-      zoom,
+      // center: [lng, lat],
+      // zoom,
     });
+
+    const canvas = map.getCanvas();
+    canvas.setAttribute('id', 'mapCanvas');
+    map.resize();
     
     map.on('move', () => {
-      // const { lng, lat } = map.getCenter();
-      this.updateLocation(lng, lat, zoom);
+      if (typeof lng === 'number') this.updateLocation(lng, lat, zoom);
     });
   }
 
@@ -42,7 +45,9 @@ class MapBox extends React.Component {
     return (
       <div
         ref={el => this.mapContainer = el}
-        className="mapStyle"
+        className="mapStyle absolute top right left bottom"
+
+        /* onDrag={this.updateLocation} */
       />
     );
   }

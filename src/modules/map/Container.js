@@ -29,7 +29,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateLocation: (lng, lat, zoom) => { dispatch(updateLocation(lng, lat, zoom)); },
+    updateLocation: (lng, lat, zoom) => { 
+      dispatch(updateLocation(lng, lat, zoom));
+    },
   };
 };
 
@@ -43,6 +45,7 @@ export default class Map extends PureComponent {
   };
 
   updateLocation = (lng, lat, zoom) => {
+    console.log('updateLocation', lng, lat, zoom);
     this.props.updateLocation(lng, lat, zoom);
   }
 
@@ -56,12 +59,12 @@ export default class Map extends PureComponent {
     return (
       <div>
         hello
-        {<MapBox
+        <MapBox
           updateLocation={this.updateLocation}
           lng={lng}
           lat={lat}
           zoom={zoom}
-        />}
+        />
       </div>
     );
   }

@@ -6,6 +6,8 @@ const initialState = {
   zoom: 1.5,
 };
 
+console.log('state:', initialState);
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case 'DATE_CHANGE': {
