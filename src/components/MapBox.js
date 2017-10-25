@@ -13,6 +13,8 @@ class MapBox extends React.Component {
     lng: PropTypes.number.isRequired,
     lat: PropTypes.number.isRequired,
     zoom: PropTypes.number.isRequired,
+    time: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
   };
 
   componentDidMount() {
@@ -98,11 +100,21 @@ class MapBox extends React.Component {
     this.props.updateLocation(lng, lat, zoom);
   }
   render() {
+    const {
+      time,
+      date,
+    } = this.props;
+
     return (
-      <div
-        ref={el => this.mapContainer = el}
-        className="mapStyle absolute top right left bottom"
-      />
+      <div>
+        <div className="inline-block absolute top left mt12 ml12 bg-darken75 color-white z1 py6 px12 round-full txt-s txt-bold">
+          <div>Date: {date} Time: {time}</div>
+        </div>
+        <div
+          ref={el => this.mapContainer = el}
+          className="mapStyle absolute top right left bottom"
+        />
+      </div>
     );
   }
 }

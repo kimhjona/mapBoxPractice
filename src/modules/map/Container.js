@@ -13,6 +13,7 @@ const mapStateToProps = state => {
     lng,
     lat,
     zoom,
+    time,
   } = state.map;
   return {
     date,
@@ -20,6 +21,7 @@ const mapStateToProps = state => {
     lng,
     lat,
     zoom,
+    time,
   };
 };
 
@@ -40,6 +42,7 @@ export default class Map extends PureComponent {
     lat: PropTypes.number,
     zoom: PropTypes.number,
     date: PropTypes.string,
+    time: PropTypes.string,
   };
 
   updateLocation = (lng, lat, zoom) => {
@@ -60,7 +63,7 @@ export default class Map extends PureComponent {
       lat,
       zoom,
       date,
-
+      time,
     } = this.props;
 
     return (
@@ -74,6 +77,8 @@ export default class Map extends PureComponent {
             lng={lng}
             lat={lat}
             zoom={zoom}
+            date={date}
+            time={time}
           />
         </div>
         <UnderMap

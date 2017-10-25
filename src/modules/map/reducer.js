@@ -36,13 +36,15 @@ const reducer = (state = initialState, action) => {
 
       const strConv = num => {
         const newResult =
-          num.length === 2
+          num.toString().length === 2
             ?
             num.toString()
             :
             '0'.concat(num);
         return newResult;
       };
+
+      // console.log(strConv(hours), strConv(minutes), strConv(seconds));
 
       const newTime =
         strConv(hours)
