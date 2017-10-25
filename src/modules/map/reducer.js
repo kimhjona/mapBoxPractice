@@ -1,6 +1,7 @@
 const initialState = {
   date: '2016-07-02',
-  time: '13:09:31',
+  time: '09:00:00',
+  timeInt: 324,
   lng: -122.447303,
   lat: 37.753574,
   zoom: 9,
@@ -21,13 +22,41 @@ const reducer = (state = initialState, action) => {
       };
     }
 
-    case 'TIME_SUBMIT': {
+    case 'UPDATE_TIME': {
       const {
-        time,
+        timeInt,
       } = action;
+
+      const secondsTotal = timeInt * 100;
+      const hours = Math.floor(secondsTotal / 3600);
+      const minutes = Math.floor((secondsTotal - (hours * 3600)) / 60);
+      const seconds = Math.round(secondsTotal - (minutes * 60) - (hours * 3600));
+
+      console.log(hours, minutes, seconds);
+
+      const strConv = num => {
+        const newResult =
+          num.length === 2
+            ?
+            num.toString()
+            :
+            '0'.concat(num);
+        return newResult;
+      };
+
+      const newTime =
+        strConv(hours)
+          .concat(':')
+          .concat(strConv(minutes))
+          .concat(':')
+          .concat(strConv(seconds));
+      
+      console.log('newTime', newTime);
+
       return {
         ...state,
-        time,
+        timeInt,
+        time: newTime,
       };
     }
 

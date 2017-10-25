@@ -22,17 +22,17 @@ class MapBox extends React.Component {
       zoom,
     } = this.props;
 
-    // const MAP_BOUNDS = [
-    //   [-119.9442369,32.7089729], // Southwest coordinates
-    //   [-116.63282912,35.8275538]  // Northeast coordinates
-    // ];
+    const MAP_BOUNDS = [
+      [-123.013916, 37.524669], // Southwest coordinates
+      [-121.694183, 37.996941], // Northeast coordinates
+    ];
 
     const map = new mapboxgl.Map({
       container: this.mapContainer,
       style: 'mapbox://styles/mapbox/light-v9',
       center: [lng, lat],
       zoom,
-      // maxBounds: MAP_BOUNDS,
+      maxBounds: MAP_BOUNDS,
     });
 
     // const canvas = map.getCanvas();
@@ -59,38 +59,37 @@ class MapBox extends React.Component {
         },
         paint: {
           "line-color": "#ff69b4",
-          "line-width": 1
+          'line-width': 1
         },
         'icon-size': 0.5,
-    });
-      // map.addLayer({
-      //   id: 'population',
-      //   type: 'circle',
-      //   source: {
-      //     type: 'vector',
-      //     url: 'mapbox://examples.8fgz4egr',
-      //   },
-      //   'source-layer': 'sf2010',
-      //   paint: {
-      //     // make circles larger as the user zooms from z12 to z22
-      //     // 'circle-radius': {
-      //     //   base: 1.01,
-      //     //   stops: [[12, 1], [22, 10]]
-      //     // },
-      //     // color circles by ethnicity, using data-driven styles
-      //     // 'circle-color': {
-      //     //   property: 'ethnicity',
-      //     //   type: 'categorical',
-      //     //   stops: [
-      //     //     ['White', '#fbb03b'],
-      //     //     ['Black', '#223b53'],
-      //     //     ['Hispanic', '#e55e5e'],
-      //     //     ['Asian', '#3bb2d0'],
-      //     //     ['Other', '#ccc']]
-      //     // },
-      //   },
-      // });
-
+      });
+      map.addLayer({
+        id: 'population',
+        type: 'circle',
+        source: {
+          type: 'vector',
+          url: 'mapbox://examples.8fgz4egr',
+        },
+        'source-layer': 'sf2010',
+        paint: {
+          // make circles larger as the user zooms from z12 to z22
+          'circle-radius': {
+            base: 1.01,
+            stops: [[12, 1], [22, 10]]
+          },
+          // color circles by ethnicity, using data-driven styles
+          'circle-color': {
+            property: 'ethnicity',
+            type: 'categorical',
+            stops: [
+              ['White', '#fbb03b'],
+              ['Black', '#223b53'],
+              ['Hispanic', '#e55e5e'],
+              ['Asian', '#3bb2d0'],
+              ['Other', '#ccc']]
+          },
+        },
+      });
     });
   }
 

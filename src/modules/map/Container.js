@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { updateLocation, updateDate } from './actions';
+import { updateLocation, updateDate, updateTime } from './actions';
 import UnderMap from './UnderMap';
 
 import MapBox from '../../components/MapBox';
@@ -9,14 +9,14 @@ import MapBox from '../../components/MapBox';
 const mapStateToProps = state => {
   const {
     date,
-    time,
+    timeInt,
     lng,
     lat,
     zoom,
   } = state.map;
   return {
     date,
-    time,
+    timeInt,
     lng,
     lat,
     zoom,
@@ -35,6 +35,7 @@ export default class Map extends PureComponent {
   static propTypes = {
     updateLocation: PropTypes.func,
     updateDate: PropTypes.func,
+    updateTime: PropTypes.func,
     lng: PropTypes.number,
     lat: PropTypes.number,
     zoom: PropTypes.number,
@@ -49,12 +50,17 @@ export default class Map extends PureComponent {
     this.props.updateDate(date);
   }
 
+  updateTime = timeInt => {
+    this.props.updateTime(timeInt);
+  }
+
   render() {
     const {
       lng,
       lat,
       zoom,
       date,
+
     } = this.props;
 
     return (
@@ -72,6 +78,7 @@ export default class Map extends PureComponent {
         </div>
         <UnderMap
           updateDate={this.updateDate}
+          updateTime={this.updateTime}
           date={date}
         />
       </div>

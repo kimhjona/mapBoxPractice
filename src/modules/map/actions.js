@@ -13,3 +13,10 @@ export const updateDate = date => dispatch => {
     date,
   });
 };
+
+export const updateTime = timeInt => dispatch => {
+  dispatch({
+    type: 'UPDATE_TIME',
+    timeInt,
+  });
+};
